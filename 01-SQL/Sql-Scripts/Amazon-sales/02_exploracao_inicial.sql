@@ -11,3 +11,20 @@ SELECT category, SUM(amount), COUNT(*) FROM vendas GROUP BY category ORDER BY SU
 
 -- Ticket médio por canal de venda
 SELECT sales_channel, AVG(amount) FROM vendas GROUP BY sales_channel;
+
+-- Vendas apenas com status "Shipped"
+SELECT * FROM vendas WHERE status = 'Shipped';
+
+-- Vendas acima de R$500
+SELECT * FROM vendas WHERE amount > 500;
+
+-- Vendas entre datas
+SELECT * FROM vendas WHERE date BETWEEN '2022-04-01' AND '2022-04-30';
+
+
+-- Pedidos cancelados por estado
+SELECT ship_state, COUNT(*) AS cancelados
+FROM vendas
+WHERE status = 'Cancelled'
+GROUP BY ship_state
+ORDER BY cancelados DESC;
