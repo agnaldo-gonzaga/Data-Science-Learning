@@ -28,3 +28,24 @@ FROM vendas
 WHERE status = 'Cancelled'
 GROUP BY ship_state
 ORDER BY cancelados DESC;
+
+
+-- CASE WHEN --
+
+-- Classificar pedidos por valor
+SELECT order_id, amount,
+  CASE
+    WHEN amount < 300 THEN 'Baixo'
+    WHEN amount BETWEEN 300 AND 700 THEN 'Médio'
+    ELSE 'Alto'
+  END AS faixa_valor
+FROM vendas;
+
+
+-- Taxa de cancelamento por categoria
+SELECT category, 
+  COUNT(*) AS total,
+  SUM(CASE WHEN status = 'Cancelled' THEN 1 ELSE 0 END) AS cancelados,
+  ROUND(SUM(CASE WHEN status = 'Cancelled' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS pct_cancelamento
+FROM vendas
+GROUP BY category;
