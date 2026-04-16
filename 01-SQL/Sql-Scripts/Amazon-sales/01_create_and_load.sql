@@ -1,11 +1,13 @@
 # Apagar o banco se já existir e recriar do zero
 DROP DATABASE IF EXISTS amazon_sales;
 CREATE DATABASE amazon_sales;
-USE amazon_sales;
+USE AdventureWorksLT2025;
 
 
 -- Apagar a tabela se existir e  criando nova tabela tabela
 DROP TABLE IF EXISTS vendas;
+
+
 CREATE TABLE vendas (
     index_id           INT,
     order_id           VARCHAR(100),
@@ -25,17 +27,19 @@ CREATE TABLE vendas (
     amount             DECIMAL(10,2),
     ship_city          VARCHAR(100),
     ship_state         VARCHAR(100),
-    ship_postal_code   DECIMAL(10,2),
+    ship_postal_code   VARCHAR(20),
     ship_country       VARCHAR(100),
     b2b                VARCHAR(10)
 );
 
-# Carregando o CSV amazon com os dados ja tratado
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/amazon_limpo.csv'
-INTO TABLE vendas
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
- .
-SELECT COUNT(*) FROM vendas;
+BULK INSERT vendas
+FROM 'C:\Temp\amazon_limpo_corrigido.csv'
+WITH (
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n',
+    FIRSTROW = 2,
+    FORMAT = 'CSV'
+);
+SELECT * FROM  SalesLT.Customer;
+
+SELECT * FROM vendas;
