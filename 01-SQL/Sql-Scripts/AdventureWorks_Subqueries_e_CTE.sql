@@ -38,3 +38,19 @@ SELECT
     EmailAddress,
     Phone
 FROM SalesLT.Customer;
+
+
+-- Clientes por empresa
+SELECT 
+    CompanyName,
+    COUNT(*) AS total_clientes
+FROM SalesLT.Customer
+GROUP BY CompanyName
+ORDER BY total_clientes DESC;
+
+
+-- Clientes sem pedidos
+SELECT c.CustomerID, c.FirstName, c.LastName
+FROM SalesLT.Customer c
+LEFT JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
+WHERE o.CustomerID IS NULL;
