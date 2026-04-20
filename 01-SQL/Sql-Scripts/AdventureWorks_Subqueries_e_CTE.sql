@@ -41,6 +41,7 @@ FROM SalesLT.Customer;
 
 
 -- Clientes por empresa
+
 SELECT 
     CompanyName,
     COUNT(*) AS total_clientes
@@ -50,6 +51,7 @@ ORDER BY total_clientes DESC;
 
 
 -- Clientes sem pedidos
+
 SELECT c.CustomerID, c.FirstName, c.LastName
 FROM SalesLT.Customer c
 LEFT JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
@@ -87,3 +89,38 @@ SELECT p.ProductID, p.Name
 FROM SalesLT.Product p
 LEFT JOIN SalesLT.SalesOrderDetail d ON p.ProductID = d.ProductID
 WHERE d.ProductID IS NULL;
+
+
+
+-- ================================================
+-- 4. VENDAS
+-- ================================================
+
+-- Receita total
+
+SELECT 
+    SUM(TotalDue) AS receita_total,
+    COUNT(*) AS total_pedidos,
+    AVG(TotalDue) AS ticket_medio
+FROM SalesLT.SalesOrderHeader;
+
+
+-- Receita por mês
+
+SELECT 
+    YEAR(OrderDate)  AS ano,
+    MONTH(OrderDate) AS mes,
+    SUM(TotalDue)    AS receita
+FROM SalesLT.SalesOrderHeader
+GROUP BY YEAR(OrderDate), MONTH(OrderDate)
+ORDER BY ano, mes;
+
+-- Top 10 clientes por receita
+
+SELECT TOP 10
+    c.FirstName + ' ' + c.LastName AS cliente,
+    SUM(o.TotalDue) AS total_gasto
+FROM SalesLT.Customer c
+JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
+GROUP BY c.FirstName, c.LastName
+ORDER BY total_gasto DESC;
