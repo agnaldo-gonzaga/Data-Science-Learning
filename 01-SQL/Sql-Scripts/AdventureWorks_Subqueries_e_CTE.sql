@@ -187,3 +187,20 @@ FROM SalesLT.Customer c
 JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
 GROUP BY c.FirstName, c.LastName
 ORDER BY ticket_medio DESC;
+
+
+-- ================================================
+-- 7. ANÁLISE DE PEDIDOS
+-- ================================================
+
+-- Pedidos com mais itens
+
+SELECT TOP 10
+    o.SalesOrderID,
+    o.OrderDate,
+    COUNT(d.SalesOrderDetailID) AS qtd_itens,
+    SUM(d.LineTotal)            AS valor_total
+FROM SalesLT.SalesOrderHeader o
+JOIN SalesLT.SalesOrderDetail d ON o.SalesOrderID = d.SalesOrderID
+GROUP BY o.SalesOrderID, o.OrderDate
+ORDER BY qtd_itens DESC;
