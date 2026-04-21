@@ -127,7 +127,7 @@ ORDER BY total_gasto DESC;
 
 
 -- ================================================
--- 4. ANÁLISE DE PRODUTOS
+-- 5. ANÁLISE DE PRODUTOS
 -- ================================================
 
 -- Produtos com desconto aplicado nas vendas
@@ -153,3 +153,37 @@ SELECT
 FROM SalesLT.Product
 WHERE ListPrice > 0
 ORDER BY margem_pct DESC;
+
+
+-- ================================================
+-- 6. SEGMENTAÇÃO DE CLIENTES (RFM simplificado)
+-- ================================================
+
+-- Recência, Frequência e Valor por cliente
+
+SELECT 
+    c.CustomerID,
+    c.FirstName + ' ' + c.LastName AS cliente,
+    COUNT(o.SalesOrderID)          AS frequencia,
+    SUM(o.TotalDue)                AS valor_total,
+    MAX(o.OrderDate)               AS ultima_compra,
+    DATEDIFF(DAY, MAX(o.OrderDate), GETDATE()) AS dias_sem_comprar
+FROM SalesLT.Customer c
+JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
+GROUP BY c.CustomerID, c.FirstName, c.LastName
+ORDER BY valor_total DESC;
+
+-- Classificação por ticket médio
+
+SELECT 
+    c.FirstName + ' ' + c.LastName AS cliente,
+    AVG(o.TotalDue) AS ticket_medio,
+    CASE 
+        WHEN AVG(o.TotalDue) >= 10000 THEN 'VIP'
+        WHEN AVG(o.TotalDue) >= 3000  THEN 'Premium'
+        ELSE 'Standard'
+    END AS segmento
+FROM SalesLT.Customer c
+JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
+GROUP BY c.FirstName, c.LastName
+ORDER BY ticket_medio DESC;
