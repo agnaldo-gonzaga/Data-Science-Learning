@@ -204,3 +204,28 @@ FROM SalesLT.SalesOrderHeader o
 JOIN SalesLT.SalesOrderDetail d ON o.SalesOrderID = d.SalesOrderID
 GROUP BY o.SalesOrderID, o.OrderDate
 ORDER BY qtd_itens DESC;
+
+-- Tempo médio entre pedido e envio
+
+SELECT 
+    AVG(DATEDIFF(DAY, OrderDate, ShipDate)) AS dias_ate_envio,
+    MIN(DATEDIFF(DAY, OrderDate, ShipDate)) AS min_dias,
+    MAX(DATEDIFF(DAY, OrderDate, ShipDate)) AS max_dias
+FROM SalesLT.SalesOrderHeader
+WHERE ShipDate IS NOT NULL;
+
+-- Pedidos por status
+
+SELECT 
+    Status,
+    CASE Status
+        WHEN 1 THEN 'Em Processo'
+        WHEN 2 THEN 'Aprovado'
+        WHEN 3 THEN 'Pendente'
+        WHEN 4 THEN 'Rejeitado'
+        WHEN 5 THEN 'Enviado'
+        WHEN 6 THEN 'Cancelado'
+    END AS descricao_status,
+    COUNT(*) AS total
+FROM SalesLT.SalesOrderHeader
+GROUP BY Status;
