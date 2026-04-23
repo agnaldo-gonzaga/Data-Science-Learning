@@ -1,6 +1,5 @@
 -- ================================================
 -- ADVENTUREWORKSLT2025 - Análise de Produtos
--- Análise de Produtos
 -- Conceitos: JOIN, AVG, TOP, LEFT JOIN, WHERE IS NULL
 -- ================================================
  
