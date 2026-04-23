@@ -1,6 +1,5 @@
 -- ================================================
 -- ADVENTUREWORKSLT2025 - Análise de Clientes
--- Análise de Clientes
 -- Conceitos: SELECT com alias, GROUP BY, ORDER BY, LEFT JOIN, WHERE IS NULL
 -- ================================================
  
