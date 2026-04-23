@@ -32,3 +32,27 @@ SELECT
 FROM SalesLT.Product p
 LEFT JOIN SalesLT.SalesOrderDetail d ON p.ProductID = d.ProductID
 WHERE d.ProductID IS NULL;
+
+
+-- Produtos que tiveram desconto aplicado nas vendas
+SELECT 
+    p.Name                         AS produto,
+    AVG(d.UnitPriceDiscount) * 100 AS desconto_medio_pct,
+    SUM(d.OrderQty)                AS qtd_vendida
+FROM SalesLT.SalesOrderDetail d
+JOIN SalesLT.Product p ON d.ProductID = p.ProductID
+WHERE d.UnitPriceDiscount > 0
+GROUP BY p.Name
+ORDER BY desconto_medio_pct DESC;
+ 
+-- Margem estimada por produto (ListPrice vs StandardCost)
+-- NULLIF evita divisão por zero
+SELECT 
+    Name,
+    ListPrice,
+    StandardCost,
+    ListPrice - StandardCost AS margem_bruta,
+    ROUND((ListPrice - StandardCost) / NULLIF(ListPrice, 0) * 100, 2) AS margem_pct
+FROM SalesLT.Product
+WHERE ListPrice > 0
+ORDER BY margem_pct DESC;
