@@ -4,7 +4,7 @@
 -- ================================================
  
 USE AdventureWorksLT2025;
- 
+
 -- Dados principais dos clientes
 
 SELECT 
@@ -34,3 +34,15 @@ FROM SalesLT.Customer c
 LEFT JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
 WHERE o.CustomerID IS NULL;
  
+
+-- Valor total gasto por cliente 
+SELECT
+    c.CustomerID,
+    c.FirstName + ' ' + c.LastName AS nome_completo,
+    c.EmailAddress,
+    soh.subTotal
+FROM SalesLT.Customer c
+INNER JOIN SalesLT.SalesOrderHeader soh
+    ON c.CustomerID = soh.CustomerID
+ORDER BY soh.subTotal DESC;
+
