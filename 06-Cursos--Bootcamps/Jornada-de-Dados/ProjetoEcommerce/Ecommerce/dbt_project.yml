@@ -1,0 +1,55 @@
+name: 'Ecommerce'
+version: '1.0.0'
+config-version: 2
+
+# Configuração do perfil de conexão
+profile: 'Ecommerce'
+
+# Configurações do projeto
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configurações de modelos por camada
+models:
+  Ecommerce:
+    bronze:
+      +materialized: view
+      +schema: bronze
+      +tags: ["bronze", "raw"]
+      +meta:
+        modeling_layer: bronze
+
+    silver:
+      +materialized: view
+      +schema: silver
+      +tags: ["silver", "cleaned"]
+      +meta:
+        modeling_layer: silver
+
+    gold:
+      +materialized: view
+      +tags: ["gold", "kpi", "metrics"]
+      +meta:
+        modeling_layer: gold
+      sales:
+        +schema: gold_sales
+      customer_success:
+        +schema: gold_cs
+      pricing:
+        +schema: gold_pricing
+
+
+# Variáveis do projeto
+vars:
+  # Configurações de negócio
+  segmentacao_vip_threshold: 10000  # Receita mínima para cliente VIP
+  segmentacao_top_tier_threshold: 5000  # Receita mínima para TOP_TIER

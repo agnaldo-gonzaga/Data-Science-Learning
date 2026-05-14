@@ -1,0 +1,75 @@
+[0m18:25:50.401870 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F02AD4E950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F02E543BD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F02E5C9F90>]}
+
+
+============================== 18:25:50.451968 | 98206b98-4eec-45dc-a7d1-5565f4cf14cc ==============================
+[0m18:25:50.451968 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m18:25:50.455951 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\w10\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'invocation_command': 'dbt init', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m18:27:15.872909 [debug] [MainThread]: Starter project path: D:\Python\Lib\site-packages\dbt\include\starter_project
+[0m18:27:16.020571 [info ] [MainThread]: Setting up your profile.
+[0m18:29:40.848752 [info ] [MainThread]: Profile Ecommerce written to C:\Users\w10\.dbt\profiles.yml using target's profile_template.yml and your supplied values.
+[0m18:29:40.929283 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m18:29:40.934308 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m18:29:40.937285 [info ] [MainThread]: python version: 3.11.9
+[0m18:29:40.941284 [info ] [MainThread]: python path: D:\Python\python.exe
+[0m18:29:40.944284 [info ] [MainThread]: os info: Windows-10-10.0.19045-SP0
+[0m18:29:41.244826 [info ] [MainThread]: Using profiles dir at C:\Users\w10\.dbt
+[0m18:29:41.247941 [info ] [MainThread]: Using profiles.yml file at C:\Users\w10\.dbt\profiles.yml
+[0m18:29:41.250379 [info ] [MainThread]: Using dbt_project.yml file at D:\Area de trabalho\Antigravity\ProjetoEcommerce\Ecommerce\dbt_project.yml
+[0m18:29:41.255906 [info ] [MainThread]: adapter type: postgres
+[0m18:29:41.258908 [info ] [MainThread]: adapter version: 1.10.0
+[0m18:29:41.644386 [info ] [MainThread]: Configuration:
+[0m18:29:41.646393 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m18:29:41.649395 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m18:29:41.652396 [info ] [MainThread]: Required dependencies:
+[0m18:29:41.655392 [debug] [MainThread]: Executing "git --help"
+[0m18:29:42.039689 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m18:29:42.042682 [debug] [MainThread]: STDERR: "b''"
+[0m18:29:42.045684 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m18:29:42.047799 [info ] [MainThread]: Connection:
+[0m18:29:42.051567 [info ] [MainThread]:   host: aws-1-us-west-2.pooler.supabase.com
+[0m18:29:42.054560 [info ] [MainThread]:   port: 5432
+[0m18:29:42.057555 [info ] [MainThread]:   user: postgres.qmjjzuoysnxyjlcclmqi
+[0m18:29:42.060561 [info ] [MainThread]:   database: postgres
+[0m18:29:42.063559 [info ] [MainThread]:   schema: public
+[0m18:29:42.066563 [info ] [MainThread]:   connect_timeout: 10
+[0m18:29:42.069559 [info ] [MainThread]:   role: None
+[0m18:29:42.073569 [info ] [MainThread]:   search_path: None
+[0m18:29:42.076561 [info ] [MainThread]:   keepalives_idle: 0
+[0m18:29:42.078555 [info ] [MainThread]:   sslmode: None
+[0m18:29:42.081677 [info ] [MainThread]:   sslcert: None
+[0m18:29:42.084650 [info ] [MainThread]:   sslkey: None
+[0m18:29:42.087654 [info ] [MainThread]:   sslrootcert: None
+[0m18:29:42.090644 [info ] [MainThread]:   application_name: dbt
+[0m18:29:42.092648 [info ] [MainThread]:   retries: 1
+[0m18:29:42.096649 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m18:29:43.741933 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m18:29:57.318790 [debug] [MainThread]: Using postgres connection "debug"
+[0m18:29:57.321799 [debug] [MainThread]: On debug: select 1 as id
+[0m18:29:57.323793 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m18:29:59.817733 [debug] [MainThread]: SQL status: SELECT 1 in 2.493 seconds
+[0m18:29:59.820730 [debug] [MainThread]: On debug: Close
+[0m18:29:59.856261 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m18:29:59.859264 [info ] [MainThread]: [32mAll checks passed![0m
+[0m18:29:59.862260 [info ] [MainThread]: Your new dbt project "Ecommerce" was created!
+Initialized new project in D:\Area de trabalho\Antigravity\ProjetoEcommerce\Ecommerce\Ecommerce
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m18:29:59.866983 [debug] [MainThread]: Command `dbt init` succeeded at 18:29:59.866983 after 249.78 seconds
+[0m18:29:59.869976 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m18:29:59.871979 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F02AD4CF10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F02E53DB50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F02E538AD0>]}
+[0m18:29:59.873973 [debug] [MainThread]: Flushing usage events
+[0m18:30:01.707665 [debug] [MainThread]: An error was encountered while trying to flush usage events
