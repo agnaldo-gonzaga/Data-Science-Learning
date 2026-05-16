@@ -77,7 +77,7 @@ raw.vendas               → bronze_vendas               → silver_vendas      
 
 ```bash
 # Instalar dependências
-pip install dbt-duckdb
+pip install dbt-postgres
 
 # Rodar todos os models
 dbt run
