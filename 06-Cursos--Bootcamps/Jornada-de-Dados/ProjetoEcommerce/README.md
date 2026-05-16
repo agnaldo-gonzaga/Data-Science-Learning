@@ -62,7 +62,7 @@ Camada de modelos prontos para consumo analítico e BI.
 
 ## 🔗 Lineage Graph
 
-![Lineage Graph](assets/lineage_graph.png)
+![Lineage Graph](assets/Lineage_Graph.png)
 
 ```
 raw.clientes             → bronze_clientes             → silver_clientes             → clientes_segmentacao
@@ -112,7 +112,7 @@ Os testes estão definidos nos arquivos `.yml` de cada camada e cobrem:
 | Ferramenta | Uso |
 |---|---|
 | dbt | Transformação e orquestração dos models |
-| DuckDB / Parquet | Armazenamento local dos dados |
+| PostgreSQL / Parquet | Banco de dados relacional |
 | SQL | Lógica de transformação |
 | VS Code | Desenvolvimento |
 
