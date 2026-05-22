@@ -91,10 +91,9 @@ Ponto de partida clássico no ML — o famoso dataset Iris. Utilizado para prati
 
 ---
 
-## 👨‍💻 Autor
+## 📫 Contato
+- LinkedIn: Agnaldo Gonzaga
+- Email: agnaldo.gonzaga.ds@gmail.com
 
-Repositório de estudos pessoais — atualizado continuamente conforme o aprendizado avança.
-
----
-
-> *"A máquina aprende com dados. O desenvolvedor aprende com prática."*
+## ⭐ Contribuição
+Sinta-se à vontade para explorar, sugerir melhorias ou contribuir.
