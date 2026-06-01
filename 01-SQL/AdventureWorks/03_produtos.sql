@@ -56,3 +56,31 @@ SELECT
 FROM SalesLT.Product
 WHERE ListPrice > 0
 ORDER BY margem_pct DESC;
+
+
+-- Categorias com mais de 5 produtos
+
+SELECT
+    pc.Name AS categoria,
+    COUNT(p.ProductID) AS total_produtos
+FROM SalesLT.Product p
+JOIN SalesLT.ProductCategory pc
+    ON p.ProductCategoryID = pc.ProductCategoryID
+GROUP BY pc.Name
+HAVING COUNT(p.ProductID) > 5
+ORDER BY total_produtos DESC;
+
+
+
+-- Estatísticas de preço por categoria
+
+SELECT
+    pc.Name AS categoria,
+    MIN(p.ListPrice) AS menor_preco,
+    MAX(p.ListPrice) AS maior_preco,
+    AVG(p.ListPrice) AS preco_medio
+FROM SalesLT.Product p
+JOIN SalesLT.ProductCategory pc
+    ON p.ProductCategoryID = pc.ProductCategoryID
+GROUP BY pc.Name
+ORDER BY preco_medio DESC;
