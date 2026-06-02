@@ -6,6 +6,7 @@
 USE AdventureWorksLT2025;
  
 -- Receita total, quantidade de pedidos e ticket médio
+
 SELECT 
     SUM(TotalDue) AS receita_total,
     COUNT(*)      AS total_pedidos,
@@ -13,6 +14,7 @@ SELECT
 FROM SalesLT.SalesOrderHeader;
  
 -- Receita agrupada por mês e ano
+
 SELECT 
     YEAR(OrderDate)  AS ano,
     MONTH(OrderDate) AS mes,
@@ -22,6 +24,7 @@ GROUP BY YEAR(OrderDate), MONTH(OrderDate)
 ORDER BY ano, mes;
  
 -- Top 10 clientes que mais gastaram
+
 SELECT TOP 10
     c.FirstName + ' ' + c.LastName AS cliente,
     SUM(o.TotalDue)                AS total_gasto
@@ -29,3 +32,36 @@ FROM SalesLT.Customer c
 JOIN SalesLT.SalesOrderHeader o ON c.CustomerID = o.CustomerID
 GROUP BY c.FirstName, c.LastName
 ORDER BY total_gasto DESC;
+
+-- Top 10 produtos mais vendidos por valor
+
+SELECT TOP 10
+    p.Name AS produto,
+    SUM(d.LineTotal) AS receita_produto
+FROM SalesLT.Product p
+JOIN SalesLT.SalesOrderDetail d
+    ON p.ProductID = d.ProductID
+GROUP BY p.Name
+ORDER BY receita_produto DESC;
+
+
+-- Clientes com mais pedidos
+
+SELECT TOP 10
+    c.FirstName + ' ' + c.LastName AS cliente,
+    COUNT(o.SalesOrderID) AS qtd_pedidos
+FROM SalesLT.Customer c
+JOIN SalesLT.SalesOrderHeader o
+    ON c.CustomerID = o.CustomerID
+GROUP BY c.FirstName, c.LastName
+ORDER BY qtd_pedidos DESC;
+
+-- Ticket médio por cliente
+SELECT TOP 10
+    c.FirstName + ' ' + c.LastName AS cliente,
+    AVG(o.TotalDue) AS ticket_medio
+FROM SalesLT.Customer c
+JOIN SalesLT.SalesOrderHeader o
+    ON c.CustomerID = o.CustomerID
+GROUP BY c.FirstName, c.LastName
+ORDER BY ticket_medio DESC;
