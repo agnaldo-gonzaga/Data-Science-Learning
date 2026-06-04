@@ -57,6 +57,7 @@ GROUP BY c.FirstName, c.LastName
 ORDER BY qtd_pedidos DESC;
 
 -- Ticket médio por cliente
+
 SELECT TOP 10
     c.FirstName + ' ' + c.LastName AS cliente,
     AVG(o.TotalDue) AS ticket_medio
@@ -64,4 +65,27 @@ FROM SalesLT.Customer c
 JOIN SalesLT.SalesOrderHeader o
     ON c.CustomerID = o.CustomerID
 GROUP BY c.FirstName, c.LastName
-ORDER BY ticket_medio DESC;
+ORDER BY ticket_medio DESC;A
+
+-- Receita por categoria de produto
+
+SELECT
+    pc.Name AS categoria,
+    SUM(d.LineTotal) AS receita
+FROM SalesLT.ProductCategory pc
+JOIN SalesLT.Product p
+    ON pc.ProductCategoryID = p.ProductCategoryID
+JOIN SalesLT.SalesOrderDetail d
+    ON p.ProductID = d.ProductID
+GROUP BY pc.Name
+ORDER BY receita DESC;
+
+-- Produtos nunca vendidos
+
+SELECT
+    p.ProductID,
+    p.Name
+FROM SalesLT.Product p
+LEFT JOIN SalesLT.SalesOrderDetail d
+    ON p.ProductID = d.ProductID
+WHERE d.ProductID IS NULL;
